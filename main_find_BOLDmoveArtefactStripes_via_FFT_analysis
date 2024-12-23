@@ -1,0 +1,67 @@
+# this script:
+#################
+# - 
+
+
+# python scripts used: 
+#   FFT_dcm_image_analysis.py
+#   (python libraries required: numpy, pydicom, argparse, scipy.fftpack)
+#
+#
+# input: 
+#   - 
+#
+# output: 
+#   - 
+#
+
+
+#!/bin/bash
+
+
+# reqiured inputs:
+rootPath="/mnt/c/Users/marco/sciebo/01_Julian/13_20240920_RealTouch_bold/"
+scriptPath="/mnt/c/Users/marco/HiDrive/KKB/Pipelines/detect_BOLD_movement_artefact/"
+destPath="/mnt/c/Users/marco/HiDrive/KKB/Pipelines/detect_BOLD_movement_artefact/out/"
+sagIdx=30
+freq=5
+
+
+cd $rootPath
+
+counter=1
+
+# option to loop over all subfolders in the rootdir:
+#for currFolder in ./*; do
+#    currFolder_name="${currFolder#./}"
+
+
+# loop over vol files to identify the B0 volumes:
+for filename in *; do
+
+    #bVal=$(dcmdump ./$filename | grep "(0018,9087)" | sed -n 's/.*\[\([^]]*\)\].*/\1/p')
+    #StudyDate=$(dcmdump ./$filename | grep "(0018,9087)" | sed -n 's/.*\[\([^]]*\)\].*/\1/p')
+    #bVal=$(dcmdump ./$filename | grep "(0018,9087)" | sed -n 's/.*FD \([0-9]*\).*/\1/p')
+    #bVal=$(dcmdump ./$filename | grep "(0018,9087)" | head -n 1 | sed -n 's/.*FD \([0-9]*\).*/\1/p')
+
+
+
+    echo "idx: "$counter
+    echo "filename: "$filename
+    #echo "bVal: "$bVal
+    echo "---"
+
+    python $scriptPath"FFT_dcm_image_analysis.py" $filename $sagIdx $freq >> $destPath"match_score.txt"
+
+    counter=$((counter+1))
+
+done
+
+
+        
+
+
+
+
+
+
