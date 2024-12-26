@@ -4,17 +4,16 @@ This script identifies a movement artefact in BOLD images; a periodic stripe art
 
 # this script:
 #################
-# - 
 
 
 # python scripts used: 
-#   FFT_dcm_image_analysis.py
-#   (python libraries required: numpy, pydicom, argparse, scipy.fftpack)
-#
-#
-# input: 
-#   - 
-#
-# output: 
-#   - 
-#
+- FFT_dcm_image_analysis.py
+  (python libraries required: numpy, pydicom, argparse, scipy.fftpack)
+
+
+input: 
+ - 
+
+output: 
+ - 
+
